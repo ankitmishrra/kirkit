@@ -1,0 +1,13 @@
+.git
+.gitignore
+*.md
+.env
+docker-compose.yml
+Dockerfile
+.dockerignore
+web/node_modules
+web/dist
+*.xlsx
+*.csv
+**/testdata
+**/*_test.go

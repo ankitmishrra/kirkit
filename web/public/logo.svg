@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
+  <defs>
+    <linearGradient id="kirkit-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#58a6ff"/>
+      <stop offset="100%" stop-color="#a371f7"/>
+    </linearGradient>
+  </defs>
+  <!-- Cricket ball -->
+  <circle cx="18" cy="20" r="6" fill="url(#kirkit-grad)" stroke="#2d3748" stroke-width="1"/>
+  <path d="M18 14v12M14 20h8M16.2 16.2l3.6 3.6M16.2 23.8l3.6-3.6M20.2 16.2l-3.6 3.6M20.2 23.8l-3.6-3.6" stroke="#2d3748" stroke-width="0.8" stroke-linecap="round"/>
+  <!-- Bat shape (simplified) -->
+  <path d="M32 8v24l12-4V12L32 8z" fill="url(#kirkit-grad)" stroke="#2d3748" stroke-width="1" stroke-linejoin="round"/>
+  <!-- Kirkit text -->
+  <text x="52" y="26" font-family="system-ui, 'DM Sans', sans-serif" font-size="22" font-weight="700" letter-spacing="-0.02em" fill="url(#kirkit-grad)">Kirkit</text>
+</svg>

@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    pull_policy: if_not_present  # pull image if not locally present, then create container
+    container_name: kirkit-mysql
+    restart: unless-stopped
+    networks:
+      - kirkit-network
+    environment:
+      MYSQL_ROOT_PASSWORD: kirkit_root
+      MYSQL_DATABASE: kirkit
+      MYSQL_USER: kirkit
+      MYSQL_PASSWORD: kirkit_secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - kirkit_mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    image: kirkit:latest
+    container_name: kirkit-app
+    restart: unless-stopped
+    ports:
+      - "8081:8080"  # host:container - app accessible on localhost:8081
+    environment:
+      MYSQL_DSN: "kirkit:kirkit_secret@tcp(mysql:3306)/kirkit?parseTime=true"
+      CRICAPI_KEY: "${CRICAPI_KEY:-}"
+      PORT: "8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - kirkit-network
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: kirkit-web
+    restart: unless-stopped
+    ports:
+      - "3000:80"  # host:container - web UI accessible on localhost:3000
+    depends_on:
+      - app
+    networks:
+      - kirkit-network
+
+networks:
+  kirkit-network:
+    driver: bridge
+
+volumes:
+  kirkit_mysql_data:
+    driver: local

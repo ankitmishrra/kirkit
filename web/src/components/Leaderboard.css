@@ -1,0 +1,70 @@
+.leaderboard__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.leaderboard__empty {
+  color: var(--muted);
+  padding: 2rem;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.leaderboard__table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.leaderboard__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.leaderboard__table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border);
+}
+
+.leaderboard__table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.leaderboard__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.leaderboard__table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.leaderboard__th-points,
+.leaderboard__points {
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+.leaderboard__rank {
+  width: 4rem;
+}
+
+.leaderboard__medal {
+  margin-right: 0.35rem;
+}
+
+.leaderboard__row--first .leaderboard__points {
+  color: var(--gold);
+  font-weight: 600;
+}
